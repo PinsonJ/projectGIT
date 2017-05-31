@@ -1,0 +1,27 @@
+<!doctype html>
+{% extends "layout.html" %}
+
+{% block title %}
+	Login
+{% endblock %}
+{% block body %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+        {{ message }}
+      {% endfor %}
+      <h1 class="center-align">Please login</h1>
+          <form action="" method="post">
+              <div class="input-field">
+                  <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
+              </div>
+              <div class="input-field">
+                  <input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
+              </div>
+            <input class="btn btn-default" type="submit" value="Login">
+          </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+
+{% endblock %}

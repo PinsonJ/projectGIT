@@ -8,6 +8,8 @@ body {
 	font-family: Lato, Arial, Helvetica, sans-serif;
 	background: #f9f9f9;
 	color: #555;
+	margin-bottom:100px;
+	height: 100%;
 }
 
 a {
@@ -44,7 +46,7 @@ header {
 
 }
 
-#logo{
+.logo{
 
 	margin: 20px;
 	float: left;
@@ -93,7 +95,7 @@ section {
 	max-width: 980px;
 	position: relative;
 	padding: 20px 20px 20px 20px;
-
+	min-height: 100%;
 }
 
 h1 {
@@ -205,13 +207,15 @@ table tr td {
 /*FOOTER*/
 
 .footer-distributed{
+	position: absolute;
 	background-color: #292c2f;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
-	font: medium 14px sans-serif;
+	font:  14px sans-serif;
 	padding: 45px 80px;
+	height: 100px;
 	margin-top: 80px;
 }
 
