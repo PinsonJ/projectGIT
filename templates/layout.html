@@ -11,25 +11,29 @@
 
 	<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
     <title>{% block title %}{% endblock %}</title>
-    <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/color.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <!--<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>-->
 
 
 </head>
 <body>
-<main>
+
 
 
 
 {% block header %}
      {{ macro.nav() }}
 {% endblock %}
+    <main>
 {% block body %}
 {% endblock %}
+    </main>
 {% block footer %}
     {{macro.footer() }}
 {% endblock %}
-</main>
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/signup.js"></script>
 </body>
 </html>

@@ -9,16 +9,16 @@
         {% for message in get_flashed_messages() %}
         {{ message }}
       {% endfor %}
-      <h1 class="center-align">Please login</h1>
-          <form action="" method="post">
-              <div class="input-field">
-                  <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
-              </div>
-              <div class="input-field">
-                  <input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
-              </div>
-            <input class="btn btn-default" type="submit" value="Login">
-          </form>
+      <form class="form-signin signin" action="" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label class="sr-only">Username</label>
+        <input type="text" class="form-control" placeholder="Username" required="" autofocus="" name="username" value="{{request.form.username }}">
+        <label  class="sr-only">Password</label>
+        <input type="password"  class="form-control" placeholder="Password" required="" name="password" value="{{request.form.password }}">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="btnSignIn">Sign in</button>
+      </form>
+
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
       {% endif %}

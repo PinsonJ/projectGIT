@@ -1,19 +1,28 @@
 /*------*/
 /*HEADER*/
 /*------*/
-nav img.logo{ padding: 11px 0 0 15px}
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-
+nav.navbar-default{background-color: #E44B00; border-color: #E44B00;}
+nav.navbar{border-radius: 0px}
+nav.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {color: #000000;background-color: rgba(0,0,0,0.2)}
+nav.navbar-default .navbar-nav > li > a {color: #FFFFFF}
+nav ul li:hover {  background-color: rgba(0, 0, 0, 0.1);}
+nav img.logo{ margin-top: -10px}
+/*----*/
+/*BODY*/
+/*----*/
+body {display: flex;  min-height: 100vh;  flex-direction: column;  }
+/*----*/
+/*MAIN*/
+/*----*/
+main {flex: 1 0 auto;}
 /*------*/
 /*FOOTER*/
 /*------*/
-footer.footer{margin-top: 50px}
+footer.footer{margin-top: 50px; position: relative; bottom: 0px; width: 100%}
+.page-footer {padding-top: 20px;  background-color: #292c2f;}
+.page-footer .footer-copyright {overflow: hidden;  min-height: 50px;  display: -webkit-flex;  display: -ms-flexbox;  display: flex;  -webkit-align-items: center;  -ms-flex-align: center;  align-items: center;  padding: 10px 0px;  color: rgba(255, 255, 255, 0.8);  background-color: rgba(51, 51, 51, 0.08);
+}
+/*------*/
+/*SIGNIN*/
+/*------*/
+.signin{padding: 0 330px 0;}

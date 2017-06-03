@@ -3,10 +3,10 @@ class DbClass:
         import mysql.connector as connector
 
         self.__dsn = {
-            "host": "HostnameHere",
-            "user": "UserNameHere",
-            "passwd": "PasswdHere",
-            "db": "DBNameHere"
+            "host": "localhost",
+            "user": "root",
+            "passwd": "jonas",
+            "db": "weerstation"
         }
 
         self.__connection = connector.connect(**self.__dsn)
@@ -39,5 +39,12 @@ class DbClass:
         sqlCommand = sqlQuery.format(param1=value1)
 
         self.__cursor.execute(sqlCommand)
+        self.__connection.commit()
+        self.__cursor.close()
+
+    def createUser(self, username, password):
+        # sqlQuery = "INSERT INTO users(Username,Password) VALUES ('{param1},{param2}')"
+        # sqlCommand = sqlQuery.format(param1=username, param2=password)
+        self.__cursor.callproc('sp_createUser',(username,password))
         self.__connection.commit()
         self.__cursor.close()

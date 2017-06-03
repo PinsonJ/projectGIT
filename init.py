@@ -1,9 +1,9 @@
-from flask import Flask, render_template, redirect, url_for,request, session, flash
+from flask import Flask, render_template, redirect, url_for,request, session, flash, json
 from DbClass import DbClass
 from functools import wraps
 
 app = Flask(__name__)
-
+mysql = DbClass()
 app.secret_key = "key"
 
 
@@ -40,6 +40,20 @@ def login():
 def logout():
     session.pop('logged_in', None)
     return  redirect(url_for('index'))
+
+@app.route('/signup', methods=['GET','POST'])
+def signup():
+    error = None
+    if request.method == 'POST':
+        username = request.form['inputName']
+        password = request.form['inputPassword']
+
+        # validate the received values
+        if  username and password:
+            mysql.createUser(username,password)
+        else:
+            return json.dumps({'html': '<span>Enter the required fields</span>'})
+    return render_template('signup.html')
 
 # @app.route('/collection')
 # def collection():
