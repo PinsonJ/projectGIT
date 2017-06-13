@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for,request, session, flash, json
+from flask import Flask, render_template, redirect, url_for,request, session, flash, json, escape
 from DbClass import DbClass
 from functools import wraps
 
@@ -28,11 +28,25 @@ def index():
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid credentials. Please try again'
-        else:
+    #     if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+    #         error = 'Invalid credentials. Please try again'
+    #         # flash(mysql.readUser())
+    #     else:
+    #         session['logged_in'] = True
+    #         return redirect(url_for('index'))
+    # return render_template('login.html', error=error)
+    #
+    # if 'username' in session:
+    #     return redirect(url_for('index'))
+        username = str(request.form['username'])
+        password = str(request.form['password'])
+        user = mysql.checkUser(username)
+        if len(user) is 1:
             session['logged_in'] = True
             return redirect(url_for('index'))
+        else:
+            error = 'Invalid credentials. Please try again'
+
     return render_template('login.html', error=error)
 
 @app.route('/logout')
@@ -45,32 +59,26 @@ def logout():
 def signup():
     error = None
     if request.method == 'POST':
-        username = request.form['inputName']
-        password = request.form['inputPassword']
+        username = str(request.form['inputName'])
+        password = str(request.form['inputPassword'])
 
         # validate the received values
         if  username and password:
             mysql.createUser(username,password)
+            return redirect(url_for('login.html'))
         else:
             return json.dumps({'html': '<span>Enter the required fields</span>'})
-    return render_template('signup.html')
+        # if(mysql.checkuser(username)):
+        #     error= 'This user already exists'
+        # else:
+        #     mysql.createUser(username,password)
+        #     redirect(url_for('index'))
 
-# @app.route('/collection')
-# def collection():
-#     Database = DbClass()
-#     list_games = Database.getcollection()
-#     return render_template('collection.html', collection=list_games)
-#
-# @app.route('/contact')
-# def contact():
-#     return render_template('contact.html')
-#
-# @app.route('/gamedetails/<gameid>')
-# def gamedetails(gameid):
-#     for game in gamedetails:
-#         if gameid == game[0]:
-#             gevondengame = game
-#             return render_template("gamedetails.html", game=gevondengame)
+    return render_template('signup.html', error=error)
+
+@app.route('/chart')
+def chart():
+    return render_template('chart.html')
 
 @app.errorhandler(404)
 def pagenotfound(error):

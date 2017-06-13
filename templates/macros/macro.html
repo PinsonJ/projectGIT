@@ -11,9 +11,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
                     <li {% if request.path=="/" %} class="active" {% endif %}><a href="/">Home</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
-                    <li><a href="#">Page 4</a></li>
+                    <li {% if request.path=="/login" %} class="active" {% endif %}><a href="/login">Login</a></li>
+                    <li {% if request.path=="/logout" %} class="active" {% endif %}><a href="/logout">Logout</a></li>
+                    <li {% if request.path=="/signup" %} class="active" {% endif %}><a href="/signup">Signup</a></li>
                     <li><a href="#">Page 5</a></li>
                 </ul>
             </div>
