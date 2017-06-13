@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, url_for,request, session, flash, json, escape
+import os
+from flask import Flask, render_template, redirect, url_for,request, session, flash, json
 from DbClass import DbClass
 from functools import wraps
 
@@ -85,6 +86,8 @@ def pagenotfound(error):
     return render_template("error.html", error=error)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8080))
+    host = "0.0.0.0"
+    app.run(host=host, port=port,debug=True)
 
 #
