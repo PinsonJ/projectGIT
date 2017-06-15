@@ -1,3 +1,5 @@
+
+
 class DbClass:
     def __init__(self):
         import mysql.connector as connector
@@ -84,8 +86,13 @@ class DbClass:
         sqlQuery = "SELECT Username FROM users WHERE Password ='"+password+"'"
 
 
+    def WriteData(self,temperature,humidity,pressure,rainsensor,light):
+        # Query met parameters
+        sqlQuery = "INSERT INTO weerstation VALUES ('','"+temperature+"', '"+humidity+"', '"+pressure+"', '"+rainsensor+"', '"+light+"')"
 
-
+        self.__cursor.execute(sqlQuery)
+        self.__connection.commit()
+        self.__cursor.close()
 
 
 

@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, url_for,request, session, fl
 from DbClass import DbClass
 from functools import wraps
 
+
 app = Flask(__name__)
 mysql = DbClass()
 app.secret_key = "key"
@@ -17,6 +18,7 @@ def login_required(f):
             flash('You need to login first.')
             return redirect(url_for('login'))
     return wrap
+
 
 @app.route('/')
 @login_required
@@ -66,7 +68,7 @@ def signup():
         # validate the received values
         if  username and password:
             mysql.createUser(username,password)
-            return redirect(url_for('login.html'))
+            return redirect(url_for('login'))
         else:
             return json.dumps({'html': '<span>Enter the required fields</span>'})
         # if(mysql.checkuser(username)):
