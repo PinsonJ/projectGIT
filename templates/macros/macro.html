@@ -6,15 +6,16 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-                <a href="/" class="navbar-brand"><img class="logo"  src="../static/img/logo.png" ></a>
+                <a href="/" class="navbar-brand"><img class="logo"  src="{{ url_for('static', filename='img/logo.png')}}" ></a>
     </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-                    <li {% if request.path=="/" %} class="active" {% endif %}><a href="/">Home</a></li>
+                    <li {% if request.path=="/dashboard" %} class="active" {% endif %}><a href="/">Dashboard</a></li>
+                    <li {% if request.path=="/chart" %} class="active" {% endif %}><a href="/chart">Chart</a></li>
                     <li {% if request.path=="/login" %} class="active" {% endif %}><a href="/login">Login</a></li>
                     <li {% if request.path=="/logout" %} class="active" {% endif %}><a href="/logout">Logout</a></li>
                     <li {% if request.path=="/signup" %} class="active" {% endif %}><a href="/signup">Signup</a></li>
-                    <li><a href="#">Page 5</a></li>
+
                 </ul>
             </div>
         </div>
@@ -28,16 +29,17 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-1">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text"> </h5>
+                <p class="grey-text text-lighten-4"></p>
               </div>
               <div class="col-md-4 col-md-offset-2">
                 <h5 class="white-text">Links</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/">Dashboard</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/chart">Chart</a></li>
                   <li><a class="grey-text text-lighten-3" href="/login">Login</a></li>
                   <li><a class="grey-text text-lighten-3" href="/signup">Signup</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+
                 </ul>
               </div>
             </div>

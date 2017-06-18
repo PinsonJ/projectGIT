@@ -13,105 +13,64 @@
     <schema id="7" parent="1" name="WSDatabase"/>
     <table id="8" parent="2" name="users"/>
     <table id="9" parent="2" name="weerstation"/>
-    <table id="10" parent="2" name="weerstation-user"/>
-    <routine id="11" parent="2" name="sp_createUser">
+    <routine id="10" parent="2" name="sp_createUser">
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <column id="12" parent="8" name="Username">
+    <column id="11" parent="8" name="Username">
       <Position>1</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="13" parent="8" name="Password">
+    <column id="12" parent="8" name="Password">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="14" parent="8" name="PRIMARY">
+    <key id="13" parent="8" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Username</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="15" parent="9" name="ID">
+    <column id="14" parent="9" name="ID">
       <Position>1</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="16" parent="9" name="Temperature">
+    <column id="15" parent="9" name="Temperature">
       <Position>2</Position>
       <DataType>float|0</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <column id="17" parent="9" name="Humidity">
+    <column id="16" parent="9" name="Humidity">
       <Position>3</Position>
       <DataType>float|0</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <column id="18" parent="9" name="Windspeed">
-      <Position>4</Position>
-      <DataType>float|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="19" parent="9" name="Rainsensor">
+    <column id="17" parent="9" name="Rainsensor">
       <Position>5</Position>
-      <DataType>tinyint(1)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="20" parent="9" name="Timestamp">
-      <Position>6</Position>
+    <column id="18" parent="9" name="Timestamp">
+      <Position>7</Position>
       <DataType>timestamp|0</DataType>
-      <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="19" parent="9" name="Pressure">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="20" parent="9" name="light">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
     </column>
     <key id="21" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="22" parent="10" name="ID">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="23" parent="10" name="Username">
-      <Position>2</Position>
-      <DataType>varchar(45)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="24" parent="10" name="WeerstationID">
-      <Position>3</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="25" parent="10" name="Username">
-      <ColNames>Username</ColNames>
-    </index>
-    <index id="26" parent="10" name="WeerstationID">
-      <ColNames>WeerstationID</ColNames>
-    </index>
-    <key id="27" parent="10" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="28" parent="10" name="weerstation-user_ibfk_2">
-      <ColNames>Username</ColNames>
-      <RefSchemaName>weerstation</RefSchemaName>
-      <RefTableName>users</RefTableName>
-      <RefColNames>Username</RefColNames>
-    </foreign-key>
-    <foreign-key id="29" parent="10" name="weerstation-user_ibfk_1">
-      <ColNames>WeerstationID</ColNames>
-      <RefSchemaName>weerstation</RefSchemaName>
-      <RefTableName>weerstation</RefTableName>
-      <RefColNames>ID</RefColNames>
-    </foreign-key>
-    <argument id="30" parent="11" name="p_username">
+    <argument id="22" parent="10" name="p_username">
       <DataType>varchar(45)|0</DataType>
     </argument>
-    <argument id="31" parent="11" name="p_password">
+    <argument id="23" parent="10" name="p_password">
       <DataType>varchar(45)|0</DataType>
     </argument>
   </database-model>

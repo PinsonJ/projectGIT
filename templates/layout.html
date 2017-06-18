@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
 
-	<meta name="description" content="Voorbeeld pagina">
 
+    {% if request.path=="/dashboard" %}<meta http-equiv="refresh" content="70; URL={{url_for('dashboard')}}">{%endif%}
+    {% if request.path=="/chart" %}<meta http-equiv="refresh" content="320; URL={{url_for('chart')}}">{%endif%}
 	<meta name="author" content="Pinson Jonas">
 
 	<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">

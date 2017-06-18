@@ -1,0 +1,33 @@
+<!doctype html>
+{% extends "layout.html" %}
+
+
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col s8 offset-s2" style="margin-top: 5%">
+
+
+            <h2>Real time conditions</h2>
+            <h1>Temperature: {{temperature}}°C </h1>
+            <h1>Humidity: {{humidity}}%</h1>
+            <h1>Pressure: {{pressure}} hPa</h1>
+            <h1>Rain: {{rain}}</h1>
+            <h1>Light value: {{light}}%</h1>
+            <h1>Timestamp: {{timestamp}}</h1>
+            <h2>for an accurate timestamp the Raspberry pi needs an internet connection.</h2>
+            <script>
+
+                console.log(document.getElementById(3).value)
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+</html>

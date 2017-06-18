@@ -5,32 +5,171 @@
 
 
 {% block title %}
-	Chart
+Chart
 {% endblock %}
 {% block body %}
-<div class="chart">
-    <canvas id="myChart"></canvas>
+<div class="container">
+    <div class="row">
+        <div class="col s9 offset-s3">
+
+            <h1>Temperature °C for the last hour with 5 minute intervals </h1>
+            <div class="chart">
+                <canvas id="tempchart"></canvas>
+            </div>
+            <script>
+                var ctx = document.getElementById('tempchart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [{% for item in timestamp %}
+                    "{{item}}",
+                {% endfor %}],
+                datasets: [{
+                    label: 'Temperature',
+                    data: [{% for item in temperature %}
+                    "{{item}}",
+                    {% endfor %}],
+                backgroundColor: "rgba(153,255,51,0.4)"
+                }]
+                },
+                options: {
+                    responsive: true,
+                        legend
+                :
+                    {
+                        position: 'top',
+                    }
+                ,
+                    hover: {
+                        mode: 'label'
+                    }
+                ,
+                    scales: {
+                        xAxes: [{
+                            display: true,
+
+                        }],
+                            yAxes: [{
+                            display: true,
+                            ticks: {
+                                scaleStartValue:15,
+                                    }
+
+                        }]
+                    }
+                }
+                });
+            </script>
+
+
+            <h1>Humidity for the last hour with 5 minute intervals </h1>
+            <div class="chart">
+                <canvas id="Humchart"></canvas>
+            </div>
+            <script>
+                var ctx = document.getElementById('Humchart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [{% for item in timestamp %}
+                    "{{item}}",
+                {% endfor %}],
+                datasets: [{
+                    label: 'Humidity',
+
+                    data: [{% for item in humidity %}
+                    "{{item}}",
+                    {% endfor %}],
+                backgroundColor: "rgba(63,127,191,0.4)"
+                }]
+
+                },
+                options: {
+                    responsive: true,
+                        legend
+                :
+                    {
+                        position: 'top',
+                    }
+                ,
+                    hover: {
+                        mode: 'label'
+                    }
+                ,
+                    scales: {
+                        xAxes: [{
+                            display: true,
+
+                        }],
+                            yAxes: [{
+                            display: true,
+                            ticks: {
+                                scaleStartValue:55,
+
+                                    }
+                        }]
+                    }
+                }
+
+                });
+            </script>
+
+
+
+            <h1>Pressure for the last hour with 5 minute intervals </h1>
+            <div class="chart">
+                <canvas id="PresChart"></canvas>
+            </div>
+            <script>
+                var ctx = document.getElementById('PresChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [{% for item in timestamp %}
+                    "{{item}}",
+                {% endfor %}],
+                datasets: [{
+                    label: 'Pressure',
+
+                    data: [{% for item in pressure %}
+                    "{{item}}",
+                    {% endfor %}],
+                backgroundColor: "rgba(191,63,63,0.4)"
+                }]
+
+                },
+                options: {
+                    responsive: true,
+                        legend
+                :
+                    {
+                        position: 'top',
+                    }
+                ,
+                    hover: {
+                        mode: 'label'
+                    }
+                ,
+                    scales: {
+                        xAxes: [{
+                            display: true,
+
+                        }],
+                            yAxes: [{
+                            display: true,
+                            ticks: {
+                                scaleStartValue:55,
+
+                                    }
+                        }]
+                    }
+                }
+
+                });
+            </script>
+        </div>
+    </div>
 </div>
-  <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-    datasets: [{
-      label: 'apples',
-      data: [12, 19, 3, 17, 6, 3, 7],
-      backgroundColor: "rgba(153,255,51,0.4)"
-    }, {
-      label: 'oranges',
-      data: [2, 29, 5, 5, 2, 3, 10],
-      backgroundColor: "rgba(255,153,0,0.4)"
-    }]
-  },
-    responsive: false,
-    maintainAspectRatio: false
-});
-  </script>
 {% endblock %}
 
 </html>
