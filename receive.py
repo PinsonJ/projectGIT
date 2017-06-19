@@ -9,14 +9,14 @@ pieces = data.split(":")
 temperature = pieces[0]
 humidity = pieces[1]
 pressure = pieces[2]
-rainsensor = pieces[4]
-light = pieces[3]
+rainsensor = pieces[3]
+
 
 con = mdb.connect('localhost','root', 'test', 'weerstation')
 
 with con:
     cursor = con.cursor()
-    cursor.execute("""INSERT INTO weerstation VALUES('',%s,%s,%s,%s,%s,CURRENT_TIMESTAMP )""", (float(temperature),float(humidity),float(pressure),int(rainsensor),int(light)))
+    cursor.execute("""INSERT INTO weerstation VALUES('',%s,%s,%s,%s,CURRENT_TIMESTAMP )""", (float(temperature),float(humidity),float(pressure),int(rainsensor)))
     con.commit()
     cursor.close()
 

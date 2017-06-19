@@ -91,20 +91,6 @@ class DbClass:
         cursor.close()
         return rain
 
-    def getLatestLight(self):
-        # Query zonder parameters
-        sqlQuery = "SELECT light FROM weerstation ORDER BY ID DESC LIMIT 1"
-        cursor = self.__connection.cursor()
-        cursor.execute(sqlQuery)
-        result = cursor.fetchall()
-        light=result
-        light = str(light).split(',')
-        light = light[0]
-        light = light[2:]
-
-        cursor.close()
-        return light
-
     def getLatestTimestamp(self):
         # Query zonder parameters
         sqlQuery = "SELECT Timestamp FROM weerstation ORDER BY ID DESC LIMIT 1"

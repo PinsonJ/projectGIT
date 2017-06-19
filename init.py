@@ -80,11 +80,9 @@ def dashboard():
 
         rain = mysql.getLatestRainsensor()
 
-        light = mysql.getLatestLight()
-
         timestamp = mysql.getLatestTimestamp()
 
-        return render_template('dashboard.html',temperature=temperature,humidity=humidity,rain = rain,pressure=pressure,light=light,timestamp=timestamp)
+        return render_template('dashboard.html',temperature=temperature,humidity=humidity,rain = rain,pressure=pressure,timestamp=timestamp)
 
 @app.route('/chart')
 @login_required
